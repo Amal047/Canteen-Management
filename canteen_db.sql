@@ -198,6 +198,95 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Data for Name: food_items; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.food_items (id, name, price, category, stock) FROM stdin;
+1	Samosa	15	Snacks	0
+3	Paneer Roll	40	Snacks	0
+4	Veg Fried Rice	70	Main Course	0
+5	Chicken Biryani	120	Main Course	0
+6	Butter Naan	25	Main Course	0
+7	Tea	10	Beverages	0
+8	Coffee	15	Beverages	0
+9	Cold Drink	30	Beverages	0
+10	Gulab Jamun	35	Desserts	0
+2	Vada Pav	60	Snacks	0
+12	Ice Cream	50	Desserts	0
+13	Veg Burger	80	Fast Food	0
+14	Chicken Burger	100	Fast Food	21
+\.
+
+
+--
+-- Data for Name: order_items; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.order_items (id, order_id, food_item_id, quantity, item_price, total_price) FROM stdin;
+1	1	6	1	25	25
+2	1	9	1	30	30
+3	2	3	1	40	40
+4	3	14	1	100	100
+5	4	14	1	100	100
+6	5	14	1	100	100
+7	6	14	1	100	100
+\.
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.orders (id, user_id, total_amount, created_at) FROM stdin;
+1	2	55	2025-11-11 09:37:37.54352
+2	2	40	2025-11-11 09:39:36.161057
+3	3	100	2025-11-12 04:35:50.990844
+4	3	100	2025-11-12 04:36:53.969812
+5	3	100	2025-11-12 04:38:25.574309
+6	2	100	2025-11-12 04:43:53.122535
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, name, email, password, role) FROM stdin;
+1	Amal Babu	amal@example.com	1234	admin
+2	Anil Kumar	anil@example.com	1234	customer
+3	Alan	alan@example.com	1234	customer
+\.
+
+
+--
+-- Name: food_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.food_items_id_seq', 14, true);
+
+
+--
+-- Name: order_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.order_items_id_seq', 7, true);
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.orders_id_seq', 6, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 3, true);
+
+
+--
 -- Name: food_items food_items_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
